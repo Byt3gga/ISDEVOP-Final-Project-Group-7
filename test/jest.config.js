@@ -2,18 +2,18 @@
 
 module.exports = {
   roots: [
-    '<rootDir>/__tests__', // Specify the __tests__ directory for Jest to look for test files
+    '<rootDir>/__tests__', // Specify the __tests__ directory where test files are located
   ],
-  testEnvironment: 'jsdom', // If you're using jsdom for testing
-  coverageDirectory: 'coverage',
-  testResultsProcessor: './node_modules/jest-junit',
+  testEnvironment: 'jsdom', // Using jsdom as the test environment
+  coverageDirectory: '<rootDir>/coverage', // Output directory for code coverage
+  testResultsProcessor: './node_modules/jest-junit', // Processor for test results
   reporters: [
     'default',
     [
       'jest-junit',
       {
-        outputDirectory: 'test-results',
-        outputName: 'results.xml',
+        outputDirectory: '<rootDir>/test-results', // Output the results to 'test-results' directory
+        outputName: 'results.xml', // Name of the results file
       },
     ],
   ],
