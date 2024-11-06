@@ -75,18 +75,6 @@
     "coverageReporters": [
       "lcov",
       "text"
-    ],
-    "testResultsProcessor": "jest-junit",
-    "coverageDirectory": "./coverage",
-    "reporters": [
-      "default",
-      [
-        "jest-junit",
-        {
-          "outputDirectory": "./test-results",
-          "outputName": "junit.xml"
-        }
-      ]
     ]
   },
   "jest-junit": {
