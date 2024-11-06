@@ -47,14 +47,13 @@ pipeline {
         stage('Deploy Application') {
             steps {
                 echo 'Deploying application...'
-                /*
+                
                 script {
                     // Build and start containers using docker-compose
                     //i tried doing some shit in docker-compose.yml and Dockerfile but it always hangs at npm install. 
                     //to test this, run "docker-compose up --build" at terminal in vscode
                     sh 'docker-compose up --build -d'
                 }
-                */
             }
         }
 

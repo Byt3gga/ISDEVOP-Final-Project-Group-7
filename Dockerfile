@@ -1,20 +1,20 @@
-# Use the official Node.js image (v18)
+# Use the official Node.js image
 FROM node:18
 
 # Set the working directory in the container
-WORKDIR /src
+WORKDIR /app
 
-EXPOSE 80
+# Copy package.json and package-lock.json separately to leverage Docker cache if dependencies don’t change
+COPY package.json package-lock.json ./
 
-# Upgrade npm to the latest version
-RUN npm install -g npm@latest
-
-# Copy package.json, package-lock and install dependencies
-COPY package.json /src
-COPY node_modules /src
+# Install dependencies
 RUN npm install --loglevel silly
 
 # Copy the rest of the application code
-COPY . /src
+COPY . .
 
+# Expose the port on which the app will run
+EXPOSE 80
 
+# Start the application
+CMD ["npm", "start"]
