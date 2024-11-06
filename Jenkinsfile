@@ -41,12 +41,18 @@ pipeline {
                 }
             }
         }
-        stage('Publish Test Results') {
+        stage('Archive Artifacts') {
             steps {
-                // Publish the JUnit test results
-                junit 'test-results/junit.xml'
+                // Archive the generated JUnit test results file for inspection
+                archiveArtifacts 'test-results/**/*.xml'
             }
         }
+        stage('Publish Test Results') {
+            steps {
+                // Record test results from the test-results folder
+                junit 'test-results/**/*.xml'
+        }
+       
         stage('Check Test Results') {
             steps {
                 sh 'ls -l junit.xml'
@@ -92,8 +98,6 @@ pipeline {
     post {
         always {
             echo 'Pipeline finished.'
-            archiveArtifacts artifacts: '**/build/**', allowEmptyArchive: true
-            junit 'test-results/junit.xml'
         }
         success {
             echo 'Build successful!'
