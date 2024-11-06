@@ -24,7 +24,7 @@
     "format": "npm run prettier -- --write"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.15.1",
+    "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "alex": "^8.2.0",
@@ -37,6 +37,7 @@
     "globby": "^11.0.4",
     "husky": "^4.3.8",
     "jest": "^27.5.1",
+    "jest-junit": "^16.0.0",
     "lerna": "^4.0.0",
     "lerna-changelog": "^2.2.0",
     "lint-staged": "^12.1.2",
