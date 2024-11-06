@@ -12,9 +12,11 @@ services:
 
   # React app service
   react-app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile # Ensure this points to the correct Dockerfile
     ports:
-      - '80:80' # Expose React app on port 80
+      - '80:80'
     container_name: react-app
     networks:
       - monitoring

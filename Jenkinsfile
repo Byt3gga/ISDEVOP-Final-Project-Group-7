@@ -55,7 +55,10 @@ pipeline {
 
         stage('Deploy Application') {
             steps {
-                echo 'Deploying application...'
+                script {
+                    // Build and start containers using docker-compose
+                    sh 'docker-compose up --build -d'
+                }
             }
         }
 
