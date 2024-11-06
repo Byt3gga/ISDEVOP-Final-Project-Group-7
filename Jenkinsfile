@@ -51,6 +51,7 @@ pipeline {
             steps {
                 // Record test results from the test-results folder
                 junit 'test-results/**/*.xml'
+            }
         }
        
         stage('Check Test Results') {
