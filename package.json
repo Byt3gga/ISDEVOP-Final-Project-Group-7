@@ -58,17 +58,5 @@
     "*.{js,json,yml,yaml,css,scss,ts,tsx,md}": [
       "prettier --write"
     ]
-  },
-  "jest": {
-    "reporters": [
-      "default",
-      [
-        "jest-junit",
-        {
-          "outputDirectory": "./test-results",
-          "outputName": "results.xml"
-        }
-      ]
-    ]
   }
 }
