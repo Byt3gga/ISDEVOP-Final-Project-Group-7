@@ -37,7 +37,13 @@ pipeline {
                 }
             }
         }
-
+        stage('Check Test Results') {
+            steps {
+                script {
+                    sh 'ls -la test-results'
+                }
+            }
+        }
         stage('Security Check') {
             steps {
                 script {
