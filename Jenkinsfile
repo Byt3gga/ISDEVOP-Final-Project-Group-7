@@ -14,6 +14,8 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
+                sh 'rm -f package-lock.json'  // Delete package-lock.json
+                sh 'rm -rf node_modules'  // Optional: Delete node_modules
                 sh 'npm install'
                 sh 'chmod +x node_modules/.bin/react-scripts'  // Ensure react-scripts has execute permissions
                 sh 'npm install jest-junit --save-dev'

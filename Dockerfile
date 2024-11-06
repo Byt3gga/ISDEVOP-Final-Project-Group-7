@@ -1,8 +1,11 @@
-# Use an official Node.js runtime as a parent image
-FROM node:16
+# Use the official Node.js image (v18)
+FROM node:18
 
 # Set the working directory in the container
 WORKDIR /app
+
+# Upgrade npm to the latest version
+RUN npm install -g npm@latest
 
 # Copy package.json and install dependencies
 COPY package*.json ./
