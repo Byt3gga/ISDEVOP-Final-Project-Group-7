@@ -2,23 +2,19 @@
 FROM node:18
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /src
+
+EXPOSE 80
 
 # Upgrade npm to the latest version
 RUN npm install -g npm@latest
 
-# Copy package.json and install dependencies
-COPY package*.json ./
-RUN npm install --verbose
+# Copy package.json, package-lock and install dependencies
+COPY package.json /src
+COPY node_modules /src
+RUN npm install --loglevel silly
 
 # Copy the rest of the application code
-COPY . .
+COPY . /src
 
-# Build the React app
-RUN npm run build
 
-# Expose the port the app runs on
-EXPOSE 80
-
-# Run the app
-CMD ["npm", "start"]
