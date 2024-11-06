@@ -79,6 +79,7 @@
   "jest-junit": {
     "suiteName": "jest tests",
     "output": "coverage/junit.xml",
+    "testResultsProcessor": "jest-junit",
     "classNameTemplate": "{classname} - {title}",
     "titleTemplate": "{classname} - {title}",
     "ancestorSeparator": " > ",
