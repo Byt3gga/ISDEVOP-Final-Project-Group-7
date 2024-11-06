@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/randihaboc/create-react-app.git' // Replace with your repository URL
+                git branch: 'main', url: 'https://github.com/Byt3gga/ISDEVOP-Final-Project-Group-7.git' // Replace with your repository URL
             }
         }
 
@@ -24,16 +24,45 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Run Tests') {
             steps {
-                sh 'npm test -- --watchAll=false'
+                script {
+                    sh 'npm test -- --coverage'
+                }
             }
         }
 
-        stage('Deploy') {
+        stage('Security Check') {
             steps {
-                echo 'Deploying React app...'
-                // Add deployment steps here if necessary
+                script {
+                    sh 'npm audit'
+                }
+            }
+        }
+
+        stage('Infrastructure as Code') {
+            steps {
+                script {
+                    // Example IaC step using Docker or Terraform
+                    sh 'terraform init && terraform apply -auto-approve'
+                }
+            }
+        }
+
+        stage('Deploy Application') {
+            steps {
+                script {
+                    sh 'docker-compose up -d'
+                }
+            }
+        }
+
+        stage('Monitoring & Logging') {
+            steps {
+                script {
+                    // Commands to trigger monitoring tools, e.g., Prometheus + Grafana
+                    echo "Monitoring and logging setup placeholder"
+                }
             }
         }
     }
@@ -41,6 +70,8 @@ pipeline {
     post {
         always {
             echo 'Pipeline finished.'
+            archiveArtifacts artifacts: '**/build/**', allowEmptyArchive: true
+            junit '**/test-results/*.xml'
         }
         success {
             echo 'Build successful!'
