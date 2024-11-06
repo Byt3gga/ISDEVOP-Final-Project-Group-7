@@ -16,8 +16,9 @@
     "screencast": "node ./tasks/screencast.js",
     "screencast:error": "svg-term --cast jyu19xGl88FQ3poMY8Hbmfw8y --out screencast-error.svg --window --at 12000 --no-cursor",
     "alex": "alex .",
-    "test:integration": "jest test/integration",
-    "test": "cd packages/react-scripts && node bin/react-scripts.js test",
+    "test": "react-scripts-ts test --env=jsdom",
+    "test:ci": "react-scripts-ts test --env=jsdom --testResultsProcessor ./node_modules/jest-junit --coverage --coverageDirectory=coverage",
+    "coverage": "react-scripts-ts test --env=jsdom --coverage",
     "eslint": "eslint .",
     "prettier": "prettier .",
     "format": "npm run prettier -- --write"
@@ -58,5 +59,28 @@
     "*.{js,json,yml,yaml,css,scss,ts,tsx,md}": [
       "prettier --write"
     ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}",
+      "!**/node_modules/**",
+      "!**/build/**",
+      "!**/definitionfiles/**",
+      "!**/WebWrokers/**",
+      "!**/*.mock.ts",
+      "!src/setupTests.ts"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "text"
+    ]
+  },
+  "jest-junit": {
+    "suiteName": "jest tests",
+    "output": "coverage/junit.xml",
+    "classNameTemplate": "{classname} - {title}",
+    "titleTemplate": "{classname} - {title}",
+    "ancestorSeparator": " > ",
+    "usePathForSuiteName": "true"
   }
 }
