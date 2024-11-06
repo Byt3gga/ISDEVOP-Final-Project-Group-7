@@ -15,7 +15,6 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh 'npm install'
-                sh 'chmod +x /usr/local/bin/docker-compose'
                 sh 'chmod +x node_modules/.bin/react-scripts'  // Ensure react-scripts has execute permissions
                 sh 'npm install jest-junit --save-dev'
             }
