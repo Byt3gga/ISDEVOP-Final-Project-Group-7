@@ -25,6 +25,7 @@ pipeline {
                 sh 'npm run build'
             }
         }
+        /*
         stage('Prepare Directories') {
             steps {
                 script {
@@ -32,6 +33,7 @@ pipeline {
                 }
             }
         }
+        */
         stage('Run Tests') {
             steps {
                 script {
@@ -46,7 +48,8 @@ pipeline {
                 }
             }
         }
-
+        
+        /*
         stage('Infrastructure as Code') {
             steps {
                 script {
@@ -55,6 +58,7 @@ pipeline {
                 }
             }
         }
+        */
 
         stage('Deploy Application') {
             steps {
