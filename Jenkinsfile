@@ -93,7 +93,7 @@ pipeline {
         always {
             echo 'Pipeline finished.'
             archiveArtifacts artifacts: '**/build/**', allowEmptyArchive: true
-            junit '**/test-results/results.xml'
+            junit 'test-results/junit.xml'
         }
         success {
             echo 'Build successful!'
