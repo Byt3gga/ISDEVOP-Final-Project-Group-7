@@ -21,7 +21,8 @@
     "coverage": "react-scripts test --env=jsdom --coverage",
     "eslint": "eslint .",
     "prettier": "prettier .",
-    "format": "npm run prettier -- --write"
+    "format": "npm run prettier -- --write",
+    "eject": "react-scripts eject"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",
