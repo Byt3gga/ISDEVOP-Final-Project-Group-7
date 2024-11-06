@@ -14,6 +14,16 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
+                 // Check if docker-compose is installed, if not install it
+                    sh '''
+                        if ! command -v docker-compose &>/dev/null; then
+                            echo "docker-compose not found, installing..."
+                            curl -L "https://github.com/docker/compose/releases/download/$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                            chmod +x /usr/local/bin/docker-compose
+                        else
+                            echo "docker-compose is already installed"
+                        fi
+                        '''
                 sh 'npm install'
                 sh 'chmod +x node_modules/.bin/react-scripts'  // Ensure react-scripts has execute permissions
                 sh 'npm install jest-junit --save-dev'
