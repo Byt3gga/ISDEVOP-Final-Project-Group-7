@@ -41,6 +41,12 @@ pipeline {
                 }
             }
         }
+        stage('Publish Test Results') {
+            steps {
+                // Publish the JUnit test results
+                junit '**/test-results/*.xml'
+            }
+        }
         stage('Security Check') {
             steps {
                 script {
