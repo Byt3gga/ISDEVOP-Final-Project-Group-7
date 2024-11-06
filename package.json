@@ -75,7 +75,8 @@
     "coverageReporters": [
       "lcov",
       "text"
-    ]
+    ],
+    "testResultsProcessor": "jest-junit"
   },
   "jest-junit": {
     "suiteName": "jest tests",

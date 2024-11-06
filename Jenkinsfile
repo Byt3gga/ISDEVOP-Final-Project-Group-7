@@ -41,19 +41,11 @@ pipeline {
                 }
             }
         }
-        stage('Archive Artifacts') {
-            steps {
-                // Archive the generated JUnit test results file for inspection
-                archiveArtifacts 'test-results/**/*.xml'
-            }
-        }
         stage('Publish Test Results') {
             steps {
-                // Record test results from the test-results folder
-                junit 'test-results/**/*.xml'
+                junit '**/test-results/junit.xml'  // Adjust path based on the actual location of the file
             }
         }
-       
         stage('Check Test Results') {
             steps {
                 sh 'ls -l junit.xml'
