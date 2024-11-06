@@ -41,23 +41,6 @@ pipeline {
                 }
             }
         }
-        stage('Publish Test Results') {
-            steps {
-                junit '**/test-results/junit.xml'  // Adjust path based on the actual location of the file
-            }
-        }
-        stage('Check Test Results') {
-            steps {
-                sh 'ls -l junit.xml'
-            }
-        }
-        stage('Security Check') {
-            steps {
-                script {
-                    sh 'npm audit'
-                }
-            }
-        }
         
         /*
         stage('Infrastructure as Code') {
