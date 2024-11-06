@@ -15,6 +15,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh 'npm install'
+                sh 'chmod +x node_modules/.bin/react-scripts'  // Ensure react-scripts has execute permissions
             }
         }
 
