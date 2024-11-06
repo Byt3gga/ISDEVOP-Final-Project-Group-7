@@ -56,7 +56,10 @@ pipeline {
         stage('Deploy Application') {
             steps {
                 script {
-                    sh 'docker-compose up -d'
+                    // Ensure Docker and Docker Compose are installed and available
+                    sh 'docker-compose up -d --build'
+                    // You can check if the containers are running after deployment
+                    sh 'docker ps'
                 }
             }
         }
