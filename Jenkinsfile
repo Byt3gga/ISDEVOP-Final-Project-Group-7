@@ -4,6 +4,9 @@ pipeline {
             image 'docker/compose:latest'  // Use a pre-built Docker image with Docker Compose installed
         }
     }
+    tools {
+        nodejs 'NodeJS'  // Reference to the NodeJS tool defined in Jenkins
+    }
 
     stages {
         stage('Checkout') {
