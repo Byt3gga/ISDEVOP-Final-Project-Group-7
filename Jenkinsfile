@@ -23,7 +23,13 @@ pipeline {
                 sh 'npm run build'
             }
         }
-
+        stage('Prepare Directories') {
+            steps {
+                script {
+                    sh 'mkdir -p test-results'
+                }
+            }
+        }
         stage('Run Tests') {
             steps {
                 script {
