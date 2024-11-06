@@ -1,8 +1,11 @@
-// src/App.js
 import React from 'react';
 
 function App() {
-  return <h1>Welcome to the App!</h1>;
+  return (
+    <div className="App">
+      <h1>Welcome to React!</h1>
+    </div>
+  );
 }
 
 export default App;
